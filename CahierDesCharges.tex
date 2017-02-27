@@ -1,0 +1,131 @@
+\documentclass[a4]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=L,	                       % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=C,                 	   % the language of the code
+  otherkeywords={*,...},           % if you want to add more keywords to the set
+  numbers=none,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption= instead of title
+}
+%gestion des caractères latins
+\lstset{literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+}
+%definition d'un syle pour les documents texte
+\lstdefinestyle{txt}{
+	frame=none,
+	numbers=none,
+	stringstyle=\color{black},
+}
+
+\author{Alabi Steve - BenYamna Younes - Capdenat Nicolas- \\
+		Chouipe Thibaut - El Harti Zakaria - Lienhardt Florian}
+\title{Cahier Des Charges}
+\date{\today}
+
+\begin{document}
+\maketitle
+		\section{Preambule}
+				Tout d'abord, nous allons parler de la steganographie, qui est "l'ancetre" de la cryptographie. Elle se définit comme l'art de cacher un message dans un autre message. Cet "art"
+				est appelé art de la dissimulation. Le mot steganographie vient du grec 	ancien 'steganós' qui veut dire "étanche" et 'graphe' qui signifie « écriture ».exemples d'utilisation: 
+				encre invisible sur une feuille, lettre de Georges Sand à Alfred Musset( la subtilité réside ici dans le fait qu'il faut lire une ligne sur deux de la lettre pour découvrir le vrai message),
+				image(manipulation des indicateurs numeriques de couleurs RVB)..etc
+				Cependant, cet art présente une importante contre-mesure. En effet, si le message dissimulé est decouvert, le contenu secret esr revelé.
+
+				Ainsi, un autre "art" s'impose: il est appelé art du secret et c'est justement la cryptographie. Ce dernier vient des mots en grec ancien 'kruptos', signifiant "caché" et 'graphein'
+				signifiant lui "écrire". Globalement, cela consiste à proteger des messages. En effet, comme le dit Ronald Rivest, grand cryptologue americain et l'un des 3 inventeurs de l'algo
+				de crypto à clé publique RSA, la crypto est la pratique et études des techniques pour assurer des communications sûres en présence d'adversaires.
+				Trois critères doivent etre respectés : 
+				-confidentialité : personne ne doit lire le message et on doit protéger le contenu.
+				-authenticité : personne ne doit contrefaire l'origine du message et on doit s'assurer de la provenance de celui-ci.
+				-intégrité : personne ne doit modifier le message et on doit s'assurer de la non-modification de celui-ci.
+
+				La cryptographie, ainsi que la cryptanalyse(tout simplement l'art de rendre clair un texte crypté sans avoir connaissance de la clef utilisée) constituent la cryptologie.
+				C'est un art ancien qui a commencé au 16eme siècle avant J-C par un potier qui avait gravé sa recette secrète en supprimant des consonnes et en modifiant l'orthographe des mots.
+				C'est egalement une science nouvelle car elle est encore utilisée de nos jours dans plusieurs domaines tels que les banques(cartes), le web(navigateurs)..etc
+				La cryptologie était utilisée lors des deux guerres mondiales. Lors de la Premiere tout d'abord, où la maitrise cryptographique des francais les a avantagés par rapport a leurs
+				ennemis. De plus, cela a même precipité l'entrée en guerre des Etats-Unis a cause du télegramme Zummerman intercepté en 1917 par le Royaume-Uni.
+				Pendant la Seconde, le chiffre Enigma etait utilisé tout comme le chiffre Lorenz, mais il n'a jamais été cassé. Ainsi, des chiffreurs ont été utilisés de meme que des bombes afin de 
+				connaitre la clé quotidienne de certains jours pour attaquer les messages.
+				
+		\section{fiche d'exigence}
+		\section{numerotation des exigences}
+		\section{definition utilisee dans ce modele}
+			Les personnages Alice et Bob sont des figures classiques en cryptologie. Ces noms sont utilisés au lieu de « personne A » et « personne B » ; Alice et Bob cherchent dans la plupart des cas à communiquer de manière sécurisée.
+			Alice est la personne qui envoie le message.
+			Bob est celui qui veut recevoir le message.
+			Oscar est celui qui essaye d'attaquer le message.
+	\section{fondament du projet}
+		\subsection{But Du Projet} 
+			\subsubsection{Probleme de l'utilisation ou contexte du projet}
+				Dans le cadre de notre L3 nous devons concevoir un programme d'aide au decryptage.
+				Grace a notre programme le client/professeur va evaluer notre travail.
+			\subsubsection{objectif du projet}
+				L'objectif de ce module est de nous apprendre a travailler en equipe pour fournir un travail commun.
+		\subsection{personnes et organismes impliqués dans les enjeux du projet} 
+			\subsubsection{maitre d'ouvrage}
+				Ce projet fait partie du module projet de la 3eme annee d'info dirigé par M Kloul qui travaille pour l'uvsq.			
+		\subsection{utilisateurs du produit}
+			
+	\section{contraintes sur le projet}
+		\subsection{contraintes imposees non negociables} 
+			\subsubsection{contraintes sur la conseption de la solution}
+			\subsubsection{ Environnement de fonctionnement du système actuel }
+			\subsubsection{Applications « partenaires » (avec lesquelles le produit doit collaborer)}		
+			\subsubsection{« COTS » : Progiciels ou composants commerciaux}
+			\subsubsection{Lieux de fonctionnement prévus}
+			\subsubsection{ De combien de temps les développeurs disposent-ils pour le projet ?}
+			\subsubsection{ Quel est le budget affecté au projet ?}
+		\subsection{Glossaire et conventions de dénomination – [résumé]}
+		\subsection{Faits et hypothèses utiles – [résumé]}	
+			\subsubsection{Facteurs influençant le produit, mais qui ne sont pas des contraintes imposées sur les exigences}
+			\subsubsection{Hypothèses que l’équipe fait sur le projet}
+		
+		
+		
+
+							
+
+\end{document}
+				
+
+				
